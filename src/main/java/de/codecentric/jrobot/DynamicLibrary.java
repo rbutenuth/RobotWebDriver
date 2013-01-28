@@ -19,7 +19,7 @@ public interface DynamicLibrary {
      * @return Result of the keyword.
      * @throws Exception For easy communication with Robot.
      */
-    public Object runKeyword(String name, Object[] args) throws Exception;
+    public Object runKeyword(String name, Object... args) throws Exception;
 
     /**
      * @param name Name of the keyword.

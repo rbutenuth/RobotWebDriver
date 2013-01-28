@@ -73,7 +73,7 @@ public abstract class AbstractDynamicLibrary implements DynamicLibrary {
      * @see de.codecentric.jrobot.DynamicLibrary#runKeyword(java.lang.String, java.lang.Object[])
      */
     @Override
-    public Object runKeyword(String name, Object[] args) throws Exception {
+    public Object runKeyword(String name, Object... args) throws Exception {
         return keyword(name).runKeyword(args);
     }
 
