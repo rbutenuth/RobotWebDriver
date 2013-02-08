@@ -1,7 +1,5 @@
 package de.codecentric.jrobot.webdriver;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -265,15 +263,5 @@ public class SeleniumWebDriverLibrary extends AbstractDynamicLibrary {
      */
     public void setCurrentElement(WebElement currentElement) {
         this.currentElement = currentElement;
-    }
-
-    /**
-     * Generate the documentation for this keyword.
-     * @param args Name of the output file.
-     * @throws IOException Its I/O...
-     */
-    public static void main(String[] args) throws IOException {
-        SeleniumWebDriverLibrary lib = new SeleniumWebDriverLibrary();
-        lib.generateXmlDocumentation(new File(args[0]));
     }
 }

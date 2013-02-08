@@ -11,6 +11,7 @@ public abstract class AbstractKeyword implements Keyword {
 
     /**
      * Create keyword.
+     *
      * @param name Name, must be not empty.
      * @param arguments Arguments, see {@link #getKeywordArguments()} for details.
      * @param documentation Documentation in Wiki syntax.
@@ -37,15 +38,31 @@ public abstract class AbstractKeyword implements Keyword {
      * @see de.codecentric.jrobot.Keyword#runKeyword(java.lang.Object[])
      */
     @Override
-    public Object runKeyword(Object[] args) throws Exception {
-        if (varargs) {
-            return run(args);
-        } else {
-            if (keywordArguments.length != args.length) {
-                throw new IllegalArgumentException("Keyword " + name + " expects " + keywordArguments.length
-                    + " arguments but is called with " + args.length + " arguments.");
+    public Object runKeyword(Object[] argsParam) throws Exception {
+        int argsLength;
+        Object[] args;
+        if (argsParam == null) {
+            if (keywordArguments.length == 1) {
+                // Make null to one null parameter
+                argsLength = 1;
+                args = new Object[] { null };
+            } else {
+                argsLength = 0;
+                args = null;
             }
-            switch (args.length) {
+        } else {
+            argsLength = argsParam.length;
+            args = argsParam.clone();
+        }
+        // TODO: Insert default values for empty parameters
+        if (varargs) {
+            return run(argsParam);
+        } else {
+            if (keywordArguments.length != argsLength) {
+                throw new IllegalArgumentException("Keyword " + name + " expects " + keywordArguments.length
+                        + " arguments but is called with " + argsLength + " arguments.");
+            }
+            switch (argsLength) {
             case 0:
                 return run();
             case 1:
@@ -89,6 +106,7 @@ public abstract class AbstractKeyword implements Keyword {
 
     /**
      * Should be overridden in implementation classes.
+     *
      * @return Never
      * @throws UnsupportedOperationException Always.
      * @throws Exception An easy way to communicate with Robot.
@@ -99,6 +117,7 @@ public abstract class AbstractKeyword implements Keyword {
 
     /**
      * Should be overridden in implementation classes.
+     *
      * @param a1 First argument.
      * @return Never
      * @throws UnsupportedOperationException Always.
@@ -110,6 +129,7 @@ public abstract class AbstractKeyword implements Keyword {
 
     /**
      * Should be overridden in implementation classes.
+     *
      * @param a1 First argument.
      * @param a2 Second argument.
      * @return Never
@@ -122,6 +142,7 @@ public abstract class AbstractKeyword implements Keyword {
 
     /**
      * Should be overridden in implementation classes.
+     *
      * @param a1 First argument.
      * @param a2 Second argument.
      * @param a3 Third argument.
@@ -135,6 +156,7 @@ public abstract class AbstractKeyword implements Keyword {
 
     /**
      * Should be overridden in implementation classes.
+     *
      * @param a1 First argument.
      * @param a2 Second argument.
      * @param a3 Third argument.
@@ -149,6 +171,7 @@ public abstract class AbstractKeyword implements Keyword {
 
     /**
      * Should be overridden in implementation classes.
+     *
      * @param a1 First argument.
      * @param a2 Second argument.
      * @param a3 Third argument.
@@ -163,8 +186,9 @@ public abstract class AbstractKeyword implements Keyword {
     }
 
     /**
-     * Should be overridden in implementation classes. This method is called when the keyword has more than five arguments or
-     * when it allows a variable number of arguments.
+     * Should be overridden in implementation classes. This method is called when the keyword has more than five
+     * arguments or when it allows a variable number of arguments.
+     *
      * @param arguments The arguments.
      * @return Never
      * @throws UnsupportedOperationException Always.

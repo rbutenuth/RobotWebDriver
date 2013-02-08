@@ -45,8 +45,8 @@ public class SeleniumWebDriverLibraryTest {
     @Test
     public void testOpenCloseChrome() throws Exception {
         String url = testPage.toURI().toURL().toString();
-        String key = (String) driver.runKeyword("openBrowser", url, "chrome");
-        driver.runKeyword("closeBrowser", key);
+        driver.runKeyword("openBrowser", url, "chrome");
+        driver.runKeyword("closeBrowser", (Object[])null);
     }
 
     @Test
@@ -59,9 +59,17 @@ public class SeleniumWebDriverLibraryTest {
     @Test
     public void testOpenCloseInternetExplorer() throws Exception {
         String url = testPage.toURI().toURL().toString();
-        String key = (String) driver.runKeyword("openBrowser", url, "internetExplorer");
-        driver.runKeyword("closeBrowser", key);
+        driver.runKeyword("openBrowser", url, "internetExplorer");
+        driver.runKeyword("closeAllBrowsers");
     }
 
-    // TODO: switchToBrowser
+    @Test
+    public void testSwitchBrowser() throws Exception {
+        String url = testPage.toURI().toURL().toString();
+        String ff = (String) driver.runKeyword("openBrowser", url, "firefox");
+        String chrome = (String) driver.runKeyword("openBrowser", url, "chrome");
+        driver.runKeyword("switchToBrowser", ff);
+        driver.runKeyword("closeBrowser", ""); // should close ff
+        driver.runKeyword("closeBrowser", chrome);
+    }
 }
