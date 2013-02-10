@@ -4,7 +4,7 @@ import org.openqa.selenium.support.ui.Select;
 import de.codecentric.jrobot.AbstractKeyword;
 
 /**
- * Keywords for clicking ant typing.
+ * Keywords for clicking and typing.
  */
 public class InputKeywords {
     /**
@@ -49,7 +49,8 @@ public class InputKeywords {
 
         lib.add(new AbstractKeyword("submit", new String[] {"strategy", "key"},
             "If the element is a form, or an element within a form, then this will be submitted to the remote server. "
-                    + "If this causes the current page to change, then this method will block until the new page is loaded.") {
+                    + "If this causes the current page to change, "
+                    + "then this method will block until the new page is loaded.") {
             @Override
             public Object run(Object strategy, Object key) {
                 lib.findElement((String) strategy, (String) key).submit();

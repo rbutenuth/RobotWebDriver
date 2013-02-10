@@ -104,12 +104,14 @@ public abstract class AbstractDynamicLibrary implements DynamicLibrary {
 
     /**
      * Write the documentation of this keyword library in XML format.
-     * @param destination File we write to.
+     * The filename is the fully qualified class name with suffix ".xml".
+     * @param directory Directory we write to.
      * @throws IOException The usual I/O failures may happen
      */
-    public void generateXmlDocumentation(File destination) throws IOException {
+    public void generateXmlDocumentation(File directory) throws IOException {
         DateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(destination), "UTF-8"));
+        File file = new File(directory, getClass().getName() + ".xml");
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"));
         try {
             bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
             bw.newLine();

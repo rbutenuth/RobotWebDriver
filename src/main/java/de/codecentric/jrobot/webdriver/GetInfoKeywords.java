@@ -59,13 +59,28 @@ public class GetInfoKeywords {
                     + "noshade, novalidate, nowrap, open, paused, pubdate, readonly, required, reversed, scoped, "
                     + "seamless, seeking, selected, spellcheck, truespeed, willvalidate Finally, the following "
                     + "commonly mis-capitalized attribute/property names are evaluated as expected: - \"class\" - "
-                    + "\"readonly\" Parameters: - _strategy_: Location strategy, e.g. \"id\" - _key_: Key part of "
-                    + "location strategy - _attribute_: Name of the attribute Returns: The attribute's current "
-                    + "value or null if the value is not set.") {
+                    + "\"readonly\"\n"
+                    + "Parameters:\n - _strategy_: Location strategy, e.g. \"id\"\n - _key_: Key part of "
+                    + "location strategy - _attribute_: Name of the attribute\n"
+                    + "Returns: The attribute's current value or null if the value is not set.") {
             @Override
             public Object run(Object strategy, Object key, Object attribute) {
                 return lib.findElement((String)strategy, (String)key).getAttribute((String)attribute);
             }
         });
+
+        lib.add(new AbstractKeyword("getValue",  new String[] { "strategy", "key"},
+                "Get the value of the value attribute of the element, shortcut for "
+                        + "getAttribute strategy, key, \"value\". Will return the current value, even if this has "
+                        + "been modified after the page has been loaded.\n"
+                        +" Parameters:\n - _strategy_: Location strategy, e.g. \"id\"\n - _key_: Key part of "
+                        + "location strategy\n"
+                        + "Returns: The attribute's current "
+                        + "value or null if the value is not set.") {
+                @Override
+                public Object run(Object strategy, Object key) {
+                    return lib.findElement((String)strategy, (String)key).getAttribute("value");
+                }
+            });
     }
 }

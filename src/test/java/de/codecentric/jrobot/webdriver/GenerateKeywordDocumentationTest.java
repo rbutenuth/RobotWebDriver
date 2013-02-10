@@ -15,8 +15,11 @@ public class GenerateKeywordDocumentationTest {
 
     @Test
     public void generateDocumentation() throws IOException {
-        File xml = new File("doc/SeleniumWebDriverLibrary.xml");
-        File html = new File("doc/SeleniumWebDriverLibrary.html");
+        SeleniumWebDriverLibrary lib = new SeleniumWebDriverLibrary();
+        String name = lib.getClass().getName();
+        File dir = new File("doc");
+        File xml = new File(dir, name + ".xml");
+        File html = new File(dir, name + ".html");
 
         if (xml.isFile()) {
            assertTrue("can't delete file " + xml.getAbsolutePath(), xml.delete());
@@ -25,8 +28,7 @@ public class GenerateKeywordDocumentationTest {
             assertTrue("can't delete file " + html.getAbsolutePath(), html.delete());
          }
         // Step 1: Generate the XML-File with own generator
-        SeleniumWebDriverLibrary lib = new SeleniumWebDriverLibrary();
-        lib.generateXmlDocumentation(xml);
+        lib.generateXmlDocumentation(dir);
         assertTrue(xml.isFile());
 
         // Step 2: Convert XML to Html

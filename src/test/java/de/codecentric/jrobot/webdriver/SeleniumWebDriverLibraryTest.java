@@ -49,6 +49,21 @@ public class SeleniumWebDriverLibraryTest {
         driver.runKeyword("closeBrowser", (Object[])null);
     }
 
+    @Test(expected=IllegalArgumentException.class)
+    public void testSwitchToNonExistingBrowser() throws Exception {
+        driver.runKeyword("switchToBrowser", "not known");
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testCloseNonExistingBrowser() throws Exception {
+        driver.runKeyword("closeBrowser", "not known");
+    }
+
+    @Test(expected=IllegalStateException.class)
+    public void testNoOpenBrowser() throws Exception {
+        driver.runKeyword("getTitle", (Object[])null);
+    }
+
     @Test
     public void testOpenCloseFirefox() throws Exception {
         String url = testPage.toURI().toURL().toString();
