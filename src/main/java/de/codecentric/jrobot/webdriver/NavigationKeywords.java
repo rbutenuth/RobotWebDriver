@@ -13,7 +13,7 @@ public class NavigationKeywords {
      */
     public static void addKeywords(final SeleniumWebDriverLibrary lib) {
 
-        lib.add(new AbstractKeyword("navigateTo", new String[] {"url"},
+        lib.add(new AbstractKeyword("navigate to", new String[] {"url"},
             "Load a new web page in the current browser window. This is done using an HTTP GET operation, and the"
                     + " method will block until the load is complete. This will follow redirects issued either"
                     + " by the server or as a meta-redirect from within the returned HTML. Should a meta-redirect"
@@ -28,7 +28,7 @@ public class NavigationKeywords {
             }
         });
 
-        lib.add(new AbstractKeyword("navigateBack", new String[0], "Move back a single \"item\" in the browser's history.") {
+        lib.add(new AbstractKeyword("navigate back", new String[0], "Move back a single \"item\" in the browser's history.") {
             @Override
             public Object run() {
                 lib.driver().navigate().back();
@@ -38,7 +38,7 @@ public class NavigationKeywords {
 
         });
 
-        lib.add(new AbstractKeyword("navigateForward", new String[0],
+        lib.add(new AbstractKeyword("navigate forward", new String[0],
                 "Move a single \"item\" forward in the browser's history. Does nothing if we are on the latest page viewed.") {
             @Override
             public Object run() {
@@ -49,7 +49,7 @@ public class NavigationKeywords {
 
         });
 
-        lib.add(new AbstractKeyword("selectCurrentElement", new String[] {"strategy", "key"},
+        lib.add(new AbstractKeyword("select currentElement", new String[] {"strategy", "key"},
                 "Select a different element of the current page as toplevel element for further actions.") {
             @Override
             public Object run(Object strategy, Object key) {
@@ -58,7 +58,7 @@ public class NavigationKeywords {
             }
         });
 
-        lib.add(new AbstractKeyword("switchToFrame", new String[] {"strategy", "key"}, "Select a frame.") {
+        lib.add(new AbstractKeyword("switch to frame", new String[] {"strategy", "key"}, "Select a frame.") {
             @Override
             public Object run(Object strategy, Object key) {
                 lib.driver().switchTo().frame(lib.findElement((String)strategy, (String)key));
@@ -68,7 +68,7 @@ public class NavigationKeywords {
             }
         });
 
-        lib.add(new AbstractKeyword("switchToDefaultContent", new String[0],
+        lib.add(new AbstractKeyword("switch to default content", new String[0],
                 "Selects either the first frame on the page, or the main document when a page contains iframes.") {
             @Override
             public Object run() {
@@ -79,7 +79,7 @@ public class NavigationKeywords {
 
         });
 
-        lib.add(new AbstractKeyword("switchToAlert", new String[0],
+        lib.add(new AbstractKeyword("switch to alert", new String[0],
                 "Switches to the currently active modal dialog for this particular driver instance.") {
             @Override
             public Object run() {
@@ -90,7 +90,7 @@ public class NavigationKeywords {
 
         });
 
-        lib.add(new AbstractKeyword("switchToWindow", new String[] {"nameOrHandle"},
+        lib.add(new AbstractKeyword("switch to window", new String[] {"nameOrHandle"},
                 "Switch the focus of future commands for this driver to the window with the given name/handle.") {
             @Override
             public Object run(Object nameOrHandle) {
@@ -100,7 +100,7 @@ public class NavigationKeywords {
             }
         });
 
-        lib.add(new AbstractKeyword("getWindowHandle", new String[0],
+        lib.add(new AbstractKeyword("get window handle", new String[0],
             "Return an opaque handle to this window that uniquely identifies it within this driver instance. "
                     + "This can be used to switch to this window at a later date.") {
             @Override

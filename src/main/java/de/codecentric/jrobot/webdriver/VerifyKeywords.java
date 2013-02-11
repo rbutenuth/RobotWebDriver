@@ -12,7 +12,7 @@ public class VerifyKeywords {
      */
     public static void addKeywords(final SeleniumWebDriverLibrary lib) {
 
-        lib.add(new AbstractKeyword("textfieldValueShouldBe", new String[] {"strategy", "key", "expected"},
+        lib.add(new AbstractKeyword("textfield value should be", new String[] {"strategy", "key", "expected"},
                 "Verifies the value in text field identified by strategy / key is exactly expected.") {
             @Override
             public Object run(Object strategy, Object key, Object expected) throws Exception {

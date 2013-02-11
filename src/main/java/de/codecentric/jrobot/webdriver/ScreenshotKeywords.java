@@ -25,7 +25,7 @@ public class ScreenshotKeywords {
         screenshotDirectory = new File("").getAbsoluteFile();
         screenshotSequence = 1;
 
-        lib.add(new AbstractKeyword("setScreenshotDirectory", new String[] { "path" },
+        lib.add(new AbstractKeyword("set screenshot directory", new String[] { "path" },
                 "Set a new directory for screenshots. \n\nReturn: The absolute path of the new directory for screenshots.") {
             @Override
             public Object run(Object path) {
@@ -35,7 +35,7 @@ public class ScreenshotKeywords {
             }
         });
 
-        lib.add(new AbstractKeyword("takeScreenshot", new String[0], "Return: The absolute filename of the screenshot.") {
+        lib.add(new AbstractKeyword("take screenshot", new String[0], "Return: The absolute filename of the screenshot.") {
             @Override
             public Object run() throws IOException {
                 File f = new File(screenshotDirectory, "selenium-screenshot-" + screenshotSequence++ + ".png");

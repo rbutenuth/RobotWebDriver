@@ -45,46 +45,46 @@ public class SeleniumWebDriverLibraryTest {
     @Test
     public void testOpenCloseChrome() throws Exception {
         String url = testPage.toURI().toURL().toString();
-        driver.runKeyword("openBrowser", url, "chrome");
-        driver.runKeyword("closeBrowser", (Object[])null);
+        driver.runKeyword("open browser", url, "chrome");
+        driver.runKeyword("close browser", (Object[])null);
     }
 
     @Test(expected=IllegalArgumentException.class)
     public void testSwitchToNonExistingBrowser() throws Exception {
-        driver.runKeyword("switchToBrowser", "not known");
+        driver.runKeyword("switch to browser", "not known");
     }
 
     @Test(expected=IllegalArgumentException.class)
     public void testCloseNonExistingBrowser() throws Exception {
-        driver.runKeyword("closeBrowser", "not known");
+        driver.runKeyword("close browser", "not known");
     }
 
     @Test(expected=IllegalStateException.class)
     public void testNoOpenBrowser() throws Exception {
-        driver.runKeyword("getTitle", (Object[])null);
+        driver.runKeyword("get title", (Object[])null);
     }
 
     @Test
     public void testOpenCloseFirefox() throws Exception {
         String url = testPage.toURI().toURL().toString();
-        String key = (String) driver.runKeyword("openBrowser", url, "firefox");
-        driver.runKeyword("closeBrowser", key);
+        String key = (String) driver.runKeyword("open browser", url, "firefox");
+        driver.runKeyword("close browser", key);
     }
 
     @Test
     public void testOpenCloseInternetExplorer() throws Exception {
         String url = testPage.toURI().toURL().toString();
-        driver.runKeyword("openBrowser", url, "internetExplorer");
-        driver.runKeyword("closeAllBrowsers");
+        driver.runKeyword("open browser", url, "internetExplorer");
+        driver.runKeyword("close all browsers");
     }
 
     @Test
     public void testSwitchBrowser() throws Exception {
         String url = testPage.toURI().toURL().toString();
-        String ff = (String) driver.runKeyword("openBrowser", url, "firefox");
-        String chrome = (String) driver.runKeyword("openBrowser", url, "chrome");
-        driver.runKeyword("switchToBrowser", ff);
-        driver.runKeyword("closeBrowser", ""); // should close ff
-        driver.runKeyword("closeBrowser", chrome);
+        String ff = (String) driver.runKeyword("open browser", url, "firefox");
+        String chrome = (String) driver.runKeyword("open browser", url, "chrome");
+        driver.runKeyword("switch to browser", ff);
+        driver.runKeyword("close browser", ""); // should close ff
+        driver.runKeyword("close browser", chrome);
     }
 }

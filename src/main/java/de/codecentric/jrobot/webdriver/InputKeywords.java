@@ -13,7 +13,7 @@ public class InputKeywords {
      */
     public static void addKeywords(final SeleniumWebDriverLibrary lib) {
 
-        lib.add(new AbstractKeyword("inputText", new String[] {"strategy", "key", "text"},
+        lib.add(new AbstractKeyword("input text", new String[] {"strategy", "key", "text"},
                 "Types the given text into text field identified by locator.") {
             @Override
             public Object run(Object strategy, Object key, Object text) {
@@ -22,7 +22,7 @@ public class InputKeywords {
             }
         });
 
-        lib.add(new AbstractKeyword("selectFromList", new String[] {"strategy", "key", "text"},
+        lib.add(new AbstractKeyword("select from list", new String[] {"strategy", "key", "text"},
                 "Select an item in a drop down list identified by locator.\nThe item is identified by the visible text.") {
             @Override
             public Object run(Object strategy, Object key, Object text) {

@@ -12,7 +12,7 @@ public class GetInfoKeywords {
      */
     public static void addKeywords(final SeleniumWebDriverLibrary lib) {
 
-        lib.add(new AbstractKeyword("getTitle", new String[0],
+        lib.add(new AbstractKeyword("get title", new String[0],
             "Return: The title of the current page, with leading and trailing whitespace stripped, "
                     + "or null if one is not already set") {
             @Override
@@ -22,7 +22,7 @@ public class GetInfoKeywords {
         });
 
         lib.add(new AbstractKeyword(
-            "getPageSource",
+            "get page source",
             new String[0],
             "Get the source of the last loaded page. If the page has been modified after loading "
                     + "(for example, by Javascript) there is no guarantee that the returned text is that "
@@ -38,7 +38,7 @@ public class GetInfoKeywords {
             }
         });
 
-        lib.add(new AbstractKeyword("getText", new String[] { "strategy", "key"},
+        lib.add(new AbstractKeyword("get text", new String[] { "strategy", "key"},
                 "Returns the text of element identified by locator.") {
             @Override
             public Object run(Object strategy, Object key) {
@@ -46,7 +46,7 @@ public class GetInfoKeywords {
             }
         });
 
-        lib.add(new AbstractKeyword("getAttribute",  new String[] { "strategy", "key", "attribute"},
+        lib.add(new AbstractKeyword("get attribute",  new String[] { "strategy", "key", "attribute"},
             "Get the value of a the given attribute of the element. Will return the current value, even if this has "
                     + "been modified after the page has been loaded. More exactly, this method will return the value "
                     + "of the given attribute, unless that attribute is not present, in which case the value of the "
@@ -69,7 +69,7 @@ public class GetInfoKeywords {
             }
         });
 
-        lib.add(new AbstractKeyword("getValue",  new String[] { "strategy", "key"},
+        lib.add(new AbstractKeyword("get value",  new String[] { "strategy", "key"},
                 "Get the value of the value attribute of the element, shortcut for "
                         + "getAttribute strategy, key, \"value\". Will return the current value, even if this has "
                         + "been modified after the page has been loaded.\n"

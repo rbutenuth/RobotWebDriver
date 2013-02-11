@@ -33,24 +33,24 @@ public class GetInfoKeywordsTest {
     @Before
     public void setUp() throws Exception {
         String url = testPage.toURI().toURL().toString();
-        driver.runKeyword("openBrowser", url, "chrome");
+        driver.runKeyword("open browser", url, "chrome");
     }
 
     @After
     public void tearDown() throws Exception {
-        driver.runKeyword("closeBrowser", (Object[])null);
+        driver.runKeyword("close browser", (Object[])null);
     }
 
     @Test
     public void testGetTitle() throws Exception {
         String expected = "My Small Testpage";
-        String actual = (String) driver.runKeyword("getTitle", (Object[])null);
+        String actual = (String) driver.runKeyword("get title", (Object[])null);
         assertEquals("Title", expected, actual);
     }
 
     @Test
     public void testGetPageSource() throws Exception {
-        String source = (String)driver.runKeyword("getPageSource", (Object[])null);
+        String source = (String)driver.runKeyword("get page source", (Object[])null);
         assertTrue(source.startsWith("<!DOCTYPE html PUBLIC"));
         assertTrue(source.trim().endsWith("</html>"));
     }
@@ -58,19 +58,19 @@ public class GetInfoKeywordsTest {
     @Test
     public void testGetText() throws Exception {
         String expected = "My Small Testpage";
-        String actual = (String) driver.runKeyword("getText", "xpath", "//html/head/title");
+        String actual = (String) driver.runKeyword("get text", "xpath", "//html/head/title");
         assertEquals("Title", expected, actual);
     }
 
     @Test
     public void testGetAttribute() throws Exception {
-        String attr = (String)driver.runKeyword("getAttribute", "id", "TextfieldId", "value");
+        String attr = (String)driver.runKeyword("get attribute", "id", "TextfieldId", "value");
         assertEquals("Value of input", "42", attr);
     }
 
     @Test
     public void testGetValue() throws Exception {
-        String attr = (String)driver.runKeyword("getValue", "id", "TextfieldId");
+        String attr = (String)driver.runKeyword("get value", "id", "TextfieldId");
         assertEquals("Value of input", "42", attr);
     }
 }

@@ -36,11 +36,11 @@ public class SeleniumWebDriverLibrary extends AbstractDynamicLibrary {
         keySequence = 1;
         Runtime.getRuntime().addShutdownHook(new WebDriverExitHandler(this));
 
-        add(new ScriptingKeywords(this));
         add(new OpenBrowser());
         add(new SwitchToBrowser());
         add(new CloseBrowser());
         add(new CloseAllBrowsers());
+        ScriptingKeywords.addKeywords(this);
         NavigationKeywords.addKeywords(this);
         new ScreenshotKeywords(this);
         GetInfoKeywords.addKeywords(this);
@@ -58,7 +58,7 @@ public class SeleniumWebDriverLibrary extends AbstractDynamicLibrary {
 
     private class OpenBrowser extends AbstractKeyword {
         OpenBrowser() {
-            super("openBrowser", new String[] {"url", "browser"},
+            super("open browser", new String[] {"url", "browser"},
                 "Open a new browser, make it the current one, navigate to <code>url</code>." + "Parameters:\n"
                         + "- _url_: Where to start.\n"
                         + "- _browser_: Name of the browser, see {@link WebDriverFactory} for supported browsers.\n" + "Return:\n"
@@ -79,7 +79,7 @@ public class SeleniumWebDriverLibrary extends AbstractDynamicLibrary {
 
     private class SwitchToBrowser extends AbstractKeyword {
         SwitchToBrowser() {
-            super("switchToBrowser", new String[] {"browser"}, "Parameters: - _browser_: Make this the current browser.");
+            super("switch to browser", new String[] {"browser"}, "Parameters:\n - _browser_: Make this the current browser.");
         }
 
         @Override
@@ -97,8 +97,8 @@ public class SeleniumWebDriverLibrary extends AbstractDynamicLibrary {
 
     private class CloseBrowser extends AbstractKeyword {
         CloseBrowser() {
-            super("closeBrowser", new String[] { "browser=\"\"" },
-                "Close the given browser. Parameters: - _browser_: Key of the browser. "
+            super("close browser", new String[] { "browser=\"\"" },
+                "Close the given browser. Parameters:\n - _browser_: Key of the browser. "
                         + " If no browser is given, close the current one.");
         }
 
@@ -115,7 +115,7 @@ public class SeleniumWebDriverLibrary extends AbstractDynamicLibrary {
 
     private class CloseAllBrowsers extends AbstractKeyword {
         CloseAllBrowsers() {
-            super("closeAllBrowsers", new String[0], "Close all browsers");
+            super("close all browsers", new String[0], "Close all browsers");
         }
         @Override
         public Object run() {
