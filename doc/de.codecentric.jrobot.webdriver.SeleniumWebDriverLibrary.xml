@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<keywordspec generated="20130211 20:30:24" format="ROBOT" type="library" name="de.codecentric.jrobot.webdriver.SeleniumWebDriverLibrary">
+<keywordspec generated="20130213 20:54:31" format="ROBOT" type="library" name="de.codecentric.jrobot.webdriver.SeleniumWebDriverLibrary">
 <version></version>
 <scope>global</scope>
 <namedargs>no</namedargs>
@@ -124,6 +124,14 @@ Returns: The attribute's current value or null if the value is not set.</doc>
 - _browser_: Name of the browser, see {@link WebDriverFactory} for supported browsers.
 Return:
   Key of the browser.</doc>
+</kw>
+<kw name="replace text">
+<arguments>
+<arg>strategy</arg>
+<arg>key</arg>
+<arg>text</arg>
+</arguments>
+<doc>Clears the field identified by locator and input the given text afterwards.</doc>
 </kw>
 <kw name="select currentElement">
 <arguments>

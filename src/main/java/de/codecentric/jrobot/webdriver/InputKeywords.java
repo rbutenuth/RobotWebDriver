@@ -1,5 +1,6 @@
 package de.codecentric.jrobot.webdriver;
 
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import de.codecentric.jrobot.AbstractKeyword;
 
@@ -18,6 +19,17 @@ public class InputKeywords {
             @Override
             public Object run(Object strategy, Object key, Object text) {
                 lib.findElement((String) strategy, (String) key).sendKeys((String) text);
+                return null;
+            }
+        });
+
+        lib.add(new AbstractKeyword("replace text", new String[] {"strategy", "key", "text"},
+                "Clears the field identified by locator and input the given text afterwards.") {
+            @Override
+            public Object run(Object strategy, Object key, Object text) {
+                WebElement element = lib.findElement((String) strategy, (String) key);
+                element.clear();
+                element.sendKeys((String) text);
                 return null;
             }
         });
