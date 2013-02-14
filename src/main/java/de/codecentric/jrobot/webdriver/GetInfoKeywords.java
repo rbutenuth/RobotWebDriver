@@ -71,7 +71,7 @@ public class GetInfoKeywords {
 
         lib.add(new AbstractKeyword("get value",  new String[] { "strategy", "key"},
                 "Get the value of the value attribute of the element, shortcut for "
-                        + "getAttribute strategy, key, \"value\". Will return the current value, even if this has "
+                        + "get attribute strategy, key, \"value\". Will return the current value, even if this has "
                         + "been modified after the page has been loaded.\n"
                         +" Parameters:\n - _strategy_: Location strategy, e.g. \"id\"\n - _key_: Key part of "
                         + "location strategy\n"

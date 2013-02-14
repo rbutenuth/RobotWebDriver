@@ -1,6 +1,7 @@
 package de.codecentric.jrobot.webdriver;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.io.File;
 import org.junit.After;
@@ -52,5 +53,27 @@ public class InputKeywordsTest {
         driver.runKeyword("replace text", "id", "TextfieldId", "43");
         String text = (String)driver.runKeyword("get value", "id", "TextfieldId");
         assertEquals("43", text);
+    }
+
+    @Test
+    public void testInputReplaceSubmit() throws Exception {
+        driver.runKeyword("replace text", "id", "TextfieldId", "Hello!");
+        driver.runKeyword("click", "id", "submit");
+        String text = (String)driver.runKeyword("get value", "id", "hiddenTextFieldId");
+        assertEquals("Hello!", text);
+    }
+
+    @Test
+    public void testRadioButton() throws Exception {
+        assertEquals("true", driver.runKeyword("get attribute", "id", "wdr1", "checked"));
+        assertNull(driver.runKeyword("get attribute", "id", "wdr2", "checked"));
+        assertNull(driver.runKeyword("get attribute", "id", "wdr3", "checked"));
+        driver.runKeyword("click", "id", "wdr2");
+        assertNull(driver.runKeyword("get attribute", "id", "wdr1", "checked"));
+        assertEquals("true", driver.runKeyword("get attribute", "id", "wdr2", "checked"));
+        assertNull(driver.runKeyword("get attribute", "id", "wdr3", "checked"));
+        driver.runKeyword("click", "id", "submit");
+        String text = (String)driver.runKeyword("get value", "id", "checkedStationId");
+        assertEquals("WDR 2", text);
     }
 }
