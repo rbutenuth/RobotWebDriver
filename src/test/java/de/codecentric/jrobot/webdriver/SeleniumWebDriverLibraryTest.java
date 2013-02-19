@@ -79,6 +79,13 @@ public class SeleniumWebDriverLibraryTest {
     }
 
     @Test
+    public void testOpenClosePhantomjs() throws Exception {
+        String url = testPage.toURI().toURL().toString();
+        String key = (String) driver.runKeyword("open browser", url, "phantomjs");
+        driver.runKeyword("close browser", key);
+    }
+
+    @Test
     public void testSwitchBrowser() throws Exception {
         String url = testPage.toURI().toURL().toString();
         String ff = (String) driver.runKeyword("open browser", url, "firefox");

@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
  * Factory class for Selenium2 {@link WebDriver}s.
@@ -28,6 +30,8 @@ public class WebDriverFactory {
             driver = new FirefoxDriver();
         } else if ("internetExplorer".equals(browserName)) {
             driver = new InternetExplorerDriver();
+        } else if ("phantomjs".equals(browserName)) {
+            driver = new PhantomJSDriver(DesiredCapabilities.phantomjs());
         } else {
             throw new IllegalArgumentException("Unknown browser: " + browserName);
         }
